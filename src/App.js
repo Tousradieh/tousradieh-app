@@ -27,5 +27,10 @@ const routes = [
     exact: true,
     element: Location,
   },
+  {
+    path: "/",
+    exact: true,
+    element: Location,
+  },
 ];
 export default App;
