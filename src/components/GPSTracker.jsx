@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import Map from "./NeshanMap";
 
 const GPSLocationTracker = () => {
   const [latitude, setLatitude] = useState(null);
@@ -10,16 +11,16 @@ const GPSLocationTracker = () => {
       const options = {
         enableHighAccuracy: true,
         maximumAge: 0,
-        timeout: 5000
+        timeout: 5000,
       };
 
       const watchId = navigator.geolocation.watchPosition(
-        position => {
+        (position) => {
           setLatitude(position.coords.latitude);
           setLongitude(position.coords.longitude);
           setError(null);
         },
-        err => {
+        (err) => {
           setError(err.message);
         },
         options
@@ -29,7 +30,7 @@ const GPSLocationTracker = () => {
         navigator.geolocation.clearWatch(watchId);
       };
     } else {
-      setError('Geolocation is not supported by this browser.');
+      setError("Geolocation is not supported by this browser.");
     }
   }, []);
 
@@ -39,9 +40,12 @@ const GPSLocationTracker = () => {
       {error ? (
         <p>{error}</p>
       ) : (
-        <p>
-          Latitude: {latitude}, Longitude: {longitude}
-        </p>
+        <>
+          <p>
+            Latitude: {latitude}, Longitude: {longitude}
+          </p>
+          <Map lat={latitude} lon={longitude} />
+        </>
       )}
     </div>
   );
