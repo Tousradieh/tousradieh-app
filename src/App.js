@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Location from "./views/Location";
-
+import './App.css';
+import Home from "./views/Home";
 function App() {
   return (
     <BrowserRouter>
@@ -23,14 +24,14 @@ function App() {
 
 const routes = [
   {
-    path: "/location",
+    path: "/",
     exact: true,
     element: Location,
   },
   {
-    path: "/",
+    path: "/l",
     exact: true,
-    element: Location,
+    element: Home,
   },
 ];
 export default App;
